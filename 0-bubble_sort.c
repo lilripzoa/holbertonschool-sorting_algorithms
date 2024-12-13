@@ -1,6 +1,25 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include "sort.h"
+
+/**
+ * print_array - Prints the elements of an array of integers.
+ * @array: Pointer to the first element of the array.
+ * @size: The size of the array.
+ * Return: void
+ */
+
+void print_array_s(int *array, size_t size)
+{
+	size_t i;
+
+	for (i = 0; i < size; i++)
+	{
+		printf("%d ", array[i]);
+	}
+	printf("\n");
+}
 
 /**
  * bubble_sort - function that sorts an array of integers
@@ -11,23 +30,28 @@
 
 void bubble_sort(int *array, size_t size)
 {
+	size_t swapped;
+	int i;
 	int temp;
-	size_t i;
-	size_t j;
-	size_t k;
+	int iter;
 
-	for (i = 0; i < size - 1; i++) {
-		for (j = 0; j < size - i - 1; j++) {
-			if (array[j] > array[j + 1]) {
-				temp = array[j];
-				array[j] = array[j + 1];
-				array[j + 1] = temp;
+	if (array == NULL || size == 0)
+		return;
 
-				for (k = 0; k < size; k++) {
-					printf("%d ", array[k]);
-				}
-				printf("\n");
+	do {
+		swapped = 0;
+		i = 0;
+		for (iter = size - 1; i < iter; i++)
+		{
+			if (array[i + 1] < array[i])
+			{
+				temp = array[i];
+				array[i] = array[i + 1];
+				array[i + 1] = temp;
+				swapped = 1;
+				print_array(array, size);
 			}
 		}
-	}
+		iter--;
+	} while (swapped);
 }
