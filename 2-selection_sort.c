@@ -2,25 +2,6 @@
 #include "sort.h"
 
 /**
- * print_array_s - Prints the elements of an array of integers.
- * @array: Pointer to the first element of the array.
- * @size: The size of the array.
- * Return: void
- */
-void print_array_s(int *array, size_t size)
-{
-	size_t i;
-
-	for (i = 0; i < size; i++)
-	{
-		printf("%d", array[i]);
-		if (i < size - 1)
-			printf(" ");
-	}
-	printf("\n");
-}
-
-/**
  * selection_sort - Sorts an array of integers
  * @array: A pointer to the first element of the array.
  * @size: The size of the array.
@@ -28,25 +9,26 @@ void print_array_s(int *array, size_t size)
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j, min_index;
+	size_t i, j, min;
 	int temp;
+	size_t size_s = size;
 
-	for (i = 0; i < size - 1; i++)
+	for (i = 0; i < size_s - 1; i++)
 	{
-		min_index = i;
-		for (j = i + 1; j < size; j++)
+		min = i;
+
+		for (j = i + 1; j < size_s; j++)
 		{
-			if (array[j] < array[min_index])
-			{
-				min_index = j;
-			}
+			if (array[j] < array[min])
+
+				min = j;
 		}
-		if (min_index != i)
+
+		if (min != i)
 		{
 			temp = array[i];
-			array[i] = array[min_index];
-			array[min_index] = temp;
-
+			array[i] = array[min];
+			array[min] = temp;
 			print_array(array, size);
 		}
 	}
