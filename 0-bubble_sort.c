@@ -4,7 +4,7 @@
 #include "sort.h"
 
 /**
- * print_array - Prints the elements of an array of integers.
+ * print_array_s - Prints the elements of an array of integers.
  * @array: Pointer to the first element of the array.
  * @size: The size of the array.
  * Return: void
